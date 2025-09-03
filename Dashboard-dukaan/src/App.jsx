@@ -12,10 +12,10 @@ function App() {
   return (
     <div>
       <div className="grid grid-cols-7">
-        <div className="grid-cols-1">
+        <div className="col-span-1">
           <Sidebar />
         </div>
-        <div className="grid-cols-6">
+        <div className="col-span-6">
           <Header />
           <Overveiw />
           <div className="flex">
