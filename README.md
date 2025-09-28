@@ -27,7 +27,3 @@ Built with **React + Hono + Prisma + PostgreSQL (Accelerate)**.
 - Hono
 - Prisma Client + Accelerate
 - PostgreSQL (Prisma-hosted instance)
-
----
-
-## 📂 Project Structure
