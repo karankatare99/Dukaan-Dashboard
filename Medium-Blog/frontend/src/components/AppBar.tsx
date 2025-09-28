@@ -9,7 +9,12 @@ export const AppBar = () => {
             </Link>
 
             <div className="flex gap-3 items-center">
-                <div>Publish</div>
+                <Link to={'/publish'}>
+                    <button className="bg-green-600 font-medium text-xs text-white rounded-full p-2">
+                        Publish
+                    </button>
+                </Link>
+
                 <UserLogo author="J L" />
             </div>
         </div>
