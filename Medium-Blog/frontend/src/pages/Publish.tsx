@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { AppBar } from "../components/AppBar"
+import { ContentInput } from "../components/ContentInput";
+import { TitleInput } from "../components/TitleInput";
 
-// Add a separate text editor
+
 export const Publish = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("")
@@ -9,16 +11,10 @@ export const Publish = () => {
     return (
         <div>
             <AppBar />
-            <div className="flex justify-center">
-                <div className="flex flex-col gap-3">
-                    <input onChange={(e) => {
-                        setTitle(e.target.value)
-                    }} className="border w-full font-serif text-3xl text-slate-500 p-4 focus:outline-none focus:text-black" type="text" placeholder="Title" />
-                    <input onChange={(e) => {
-                        setContent(e.target.value)
-                    }} className="border w-full font-serif text-slate-500 p-4 focus:outline-none focus:text-black" type="text" placeholder="Content" />
-                    <button className="text-white text-sm mx-20">Post</button>
-                </div>
+            <div className="flex flex-col mx-52 mt-10 border rounded p-6 gap-4">
+                <TitleInput />
+                <ContentInput />
+                <button className="text-white mx-64">Post</button> 
             </div>
         </div>
 

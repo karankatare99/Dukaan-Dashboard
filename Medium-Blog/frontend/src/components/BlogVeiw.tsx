@@ -1,8 +1,7 @@
+import { format } from "date-fns"
 import type { Blog } from "../hooks"
 import { AppBar } from "./AppBar"
-import { Avatar } from "./Avatar"
 import { UserLogo } from "./UserLogo"
-
 
 export const BlogVeiw = ({blog} : {blog : Blog}) => {
     return (
@@ -16,7 +15,7 @@ export const BlogVeiw = ({blog} : {blog : Blog}) => {
                                 {blog.title}
                             </div>
                             <div className="text-slate-500 text-sm">
-                                Posted on August 24, 2023
+                                {format(new Date(blog.publishedAt), "MMM dd, yyyy")}
                             </div>
                             <div>
                                 {blog.content}

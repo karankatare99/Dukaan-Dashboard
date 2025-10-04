@@ -13,7 +13,7 @@ const blog = new Hono<{
   }
 }>()
 
-blog.use('/*', async (c, next) => {
+blog.use('/', async (c, next) => {
     const header = c.req.header("authorization") || "";
     const token = header.split(' ')[1]
 
@@ -53,9 +53,11 @@ blog.post('/', async (c) => {
         }
     })
 
-    return c.json({
-        postId: post.id
-    })
+    return c.json(post)
+
+    // return c.json({
+    //     postId: post.id
+    // })
 })
 
 blog.put('/', async (c) => {
@@ -91,6 +93,7 @@ blog.get('/bulk', async (c) => {
             id: true,
             title: true,
             content: true,
+            publishedAt: true,
             author: {
                 select: {
                     name: true
@@ -117,6 +120,7 @@ blog.get('/:id', async (c) => {
                 id: true,
                 title: true,
                 content: true,
+                publishedAt: true,
                 author: {
                     select: {
                         name: true

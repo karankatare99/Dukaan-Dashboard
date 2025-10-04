@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom"
 import { UserLogo } from "./UserLogo"
+import { useMetaData } from "../hooks"
 
 export const AppBar = () => {
+    const { user } = useMetaData()
+
     return (
-        <div className="flex justify-between items-center px-36 py-5">
-            <Link to={'/blogs'}>
-                <div>Medium</div>
+        <div className="flex border border-b-black justify-between items-center px-36 py-5">
+            <Link to={'/'}>
+                <div className="font-merriweather font-extrabold text-3xl">Medium</div>
             </Link>
 
             <div className="flex gap-3 items-center">
@@ -15,7 +18,7 @@ export const AppBar = () => {
                     </button>
                 </Link>
 
-                <UserLogo author="J L" />
+                <UserLogo author={user?.name || 'Anon'} />
             </div>
         </div>
     )

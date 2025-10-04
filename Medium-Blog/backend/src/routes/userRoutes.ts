@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { getPrisma } from '../prismaFunction'
-import { sign } from 'hono/jwt'
+import { sign, decode } from 'hono/jwt'
 import { signUpInput, signInInput } from '@xkaranme/medium-blog'
 
 const user = new Hono<{
@@ -9,6 +9,23 @@ const user = new Hono<{
     JWT_SECRET: string
   }
 }>()
+
+user.get('/', async(c) => {
+    const header = c.req.header("authorization") || "";
+    const token = header.split(' ')[1]
+    const data = decode(token)
+    const userId = data.payload.id || ""
+    const prisma = getPrisma(c.env.DATABASE_URL)
+    const user = await prisma.user.findFirst({
+      where: {
+        id: userId
+      },
+      select: {
+        name: true
+      }
+    })
+    return c.json(user)
+})
 
 user.post('/signup', async (c) => {
     const body = await c.req.json()
@@ -26,7 +43,7 @@ user.post('/signup', async (c) => {
           email: body.email,
           password: body.password,
           name: body.name,
-          },
+          }
       })
       const token = await sign({ id: user.id }, c.env.JWT_SECRET)
       return c.json({ token })

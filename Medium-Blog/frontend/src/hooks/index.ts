@@ -1,17 +1,52 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { BACKEND_URL } from "../config";
 
 export interface Blog {
     id: string
     title: string,
     content: string,
+    publishedAt: string
     author: {
         name: string
     }
 }
 
+export interface User {
+    name: string
+}
+
 const token = localStorage.getItem('token')
+
+export const useAutosizeTextArea = (value: string) => {
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = "auto"; // reset
+      textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
+    }
+  }, [value]);
+
+  return textAreaRef;
+};
+
+export const useMetaData = () => {
+    const [user, setUser] = useState<User>()
+
+    useEffect(() => {
+        axios.get(`${BACKEND_URL}/api/v1/user`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(res => {
+                setUser(res.data)
+            })
+    }, [])
+
+    return { user }
+}
 
 export const useBlog = ({ id } : {id : string}) => {
     const [loading, setLoading] = useState(true);
@@ -24,7 +59,6 @@ export const useBlog = ({ id } : {id : string}) => {
             }
         })
             .then(res => {
-                console.log(res.data.post)
                 setBlog(res.data.post)
                 setLoading(false)
             })

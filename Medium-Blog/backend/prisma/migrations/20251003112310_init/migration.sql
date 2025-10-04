@@ -14,6 +14,7 @@ CREATE TABLE "public"."Post" (
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
     "published" BOOLEAN NOT NULL DEFAULT false,
+    "publishedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "authorId" TEXT NOT NULL,
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")

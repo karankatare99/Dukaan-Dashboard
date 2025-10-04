@@ -5,7 +5,8 @@
   "compatibility_date": "2025-09-22",
   "vars": {
     "DATABASE_URL":"prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqd3RfaWQiOjEsInNlY3VyZV9rZXkiOiJza192eFMxQUYwcVk3RVVwSTRoaUN5dGUiLCJhcGlfa2V5IjoiMDFLNVJNWjBQTUQwRFlERTVUWjI4WlpDWVAiLCJ0ZW5hbnRfaWQiOiI1ODA2ZjEzNTNkNTUxODczYWU1MGJkMTEzODFjZjgxYTg4MTQwNjMwMzlkOTk4YmM4MzUyZDM1ZmI1NWRjYjM4IiwiaW50ZXJuYWxfc2VjcmV0IjoiYTkzNWY3MzItZmIzZS00NGJhLTk0ODQtY2QzYTgzOTMxYTJmIn0.rE2pcvQtNK9J7WcnmzwxqQVKIWasHgM4zLvE7WRGUWM",
-    "JWT_SECRET":"xJWTsecret"
+    "JWT_SECRET":"xJWTsecret",
+    // "DATABASE_URL":"postgresql://postgres:xkaranlogin@localhost:5432/postgres"
   }
   // "compatibility_flags": [
   //   "nodejs_compat"
