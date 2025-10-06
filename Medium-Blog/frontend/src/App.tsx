@@ -5,9 +5,28 @@ import { Blogs } from './pages/Blogs'
 import { SignIn } from './pages/SignIn'
 import { Publish } from './pages/Publish'
 import { HomePage } from './pages/HomePage'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { BACKEND_URL } from './config'
+import { useDispatch } from 'react-redux'
+import { type AppDispatch } from './store'
+import { setUser } from './store/userSlice'
 
 
 function App() {
+  const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (!token) return
+    axios.get(`${BACKEND_URL}/api/v1/user`, {
+      headers: { Authorization: `Bearer ${token}` }
+    }).then(res => {
+      dispatch(setUser({ name: res.data?.name, token }))
+    }).catch(() => {
+      // ignore bootstrap failures
+    })
+  }, [dispatch])
 
   return (
     <BrowserRouter>

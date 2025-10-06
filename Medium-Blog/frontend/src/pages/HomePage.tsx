@@ -1,5 +1,5 @@
-import { TopBar } from "../components/homepage/TopBar"
-import { FootBar } from "../components/homepage/FootBar"
+import { TopBar } from "../components/TopBar"
+import { FootBar } from "../components/FootBar"
 import { useNavigate } from "react-router-dom"
 
 export const HomePage = () => {

@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom"
 import { UserLogo } from "./UserLogo"
-import { useMetaData } from "../hooks"
+import { useSelector } from "react-redux"
+import type { RootState } from "../store"
 
 export const AppBar = () => {
-    const { user } = useMetaData()
+    const user = useSelector((state : RootState) => state.user)
 
     return (
-        <div className="flex border border-b-black justify-between items-center px-36 py-5">
+        <div className="flex border border-b-black justify-between mb-10 items-center px-36 py-5">
             <Link to={'/'}>
                 <div className="font-merriweather font-extrabold text-3xl">Medium</div>
             </Link>
@@ -18,7 +19,7 @@ export const AppBar = () => {
                     </button>
                 </Link>
 
-                <UserLogo author={user?.name || 'Anon'} />
+                <UserLogo author={user.name || 'Anon'} />
             </div>
         </div>
     )

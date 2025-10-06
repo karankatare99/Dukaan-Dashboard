@@ -3,7 +3,7 @@ import type { Blog } from "../hooks"
 import { AppBar } from "./AppBar"
 import { UserLogo } from "./UserLogo"
 
-export const BlogVeiw = ({blog} : {blog : Blog}) => {
+export const BlogView = ({blog} : {blog : Blog}) => {
     return (
         <div>
             <AppBar />

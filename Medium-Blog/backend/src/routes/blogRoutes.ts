@@ -14,7 +14,7 @@ const blog = new Hono<{
 }>()
 
 blog.use('/', async (c, next) => {
-    const header = c.req.header("authorization") || "";
+    const header = c.req.header("authorization") || c.req.header("token") || "";
     const token = header.split(' ')[1]
 
     try {

@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useBlog } from "../hooks"
-import { BlogVeiw } from "../components/BlogVeiw";
-
-// use atomFamily and selectorFamily afterwards
+import { BlogView } from "../components/BlogView";
 
 export const Blog = () => {
     const { id } = useParams()
@@ -17,7 +15,7 @@ export const Blog = () => {
     }
     return (
         <div>
-            <BlogVeiw blog={blog} />
+            <BlogView blog={blog} />
         </div>
     )
 }

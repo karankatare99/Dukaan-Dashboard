@@ -12,10 +12,6 @@ export interface Blog {
     }
 }
 
-export interface User {
-    name: string
-}
-
 const token = localStorage.getItem('token')
 
 export const useAutosizeTextArea = (value: string) => {
@@ -30,23 +26,6 @@ export const useAutosizeTextArea = (value: string) => {
 
   return textAreaRef;
 };
-
-export const useMetaData = () => {
-    const [user, setUser] = useState<User>()
-
-    useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/user`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-            .then(res => {
-                setUser(res.data)
-            })
-    }, [])
-
-    return { user }
-}
 
 export const useBlog = ({ id } : {id : string}) => {
     const [loading, setLoading] = useState(true);
