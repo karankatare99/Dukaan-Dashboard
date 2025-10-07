@@ -12,8 +12,6 @@ export interface Blog {
     }
 }
 
-const token = localStorage.getItem('token')
-
 export const useAutosizeTextArea = (value: string) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -32,6 +30,7 @@ export const useBlog = ({ id } : {id : string}) => {
     const [blog, setBlog] = useState<Blog>();
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         axios.get(`${BACKEND_URL}/api/v1/blog/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -41,13 +40,15 @@ export const useBlog = ({ id } : {id : string}) => {
                 setBlog(res.data.post)
                 setLoading(false)
             })
+            .catch(() => {
+                setLoading(false)
+            });
     }, [id])
 
     return {
         blog,
         loading
     }
-
 }
 
 export const useBlogs = () => {
@@ -55,6 +56,7 @@ export const useBlogs = () => {
     const [blogs, setBlogs] = useState<Blog[]>([]);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -64,6 +66,9 @@ export const useBlogs = () => {
                 setBlogs(res.data.posts)
                 setLoading(false)
             })
+            .catch(() => {
+                setLoading(false)
+            });
     }, [])
 
     return {

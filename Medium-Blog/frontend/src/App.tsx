@@ -24,7 +24,6 @@ function App() {
     }).then(res => {
       dispatch(setUser({ name: res.data?.name, token }))
     }).catch(() => {
-      // ignore bootstrap failures
     })
   }, [dispatch])
 

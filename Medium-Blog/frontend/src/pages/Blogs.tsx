@@ -1,9 +1,24 @@
 import { AppBar } from "../components/AppBar"
 import { BlogCard } from "../components/BlogCard"
+import { BlogSkele } from "../components/BlogSkele";
 import { useBlogs } from "../hooks"
 
 export const Blogs = () => {
     const {blogs, loading} = useBlogs();
+    
+    if (loading) {
+        return (
+            <div>
+                <AppBar />
+                <BlogSkele />  
+                <BlogSkele />  
+                <BlogSkele />  
+                <BlogSkele />  
+                <BlogSkele />  
+                <BlogSkele />  
+            </div>
+        )
+    }
 
     return (
         <div>
