@@ -1,29 +1,14 @@
-# Medium Blog Clone 🚀
+# Dukaan Dashboard (Tailwind CSS)
 
-A full-stack blogging platform inspired by Medium.  
-Built with **React + Hono + Prisma + PostgreSQL (Accelerate)**.
-
----
-
-## ✨ Features
-- 🔑 User authentication with JWT  
-- 📝 Create, view, and fetch blog posts  
-- 👤 User profile & author details  
-- 📡 REST API built with [Hono](https://hono.dev/)  
-- 📦 Database powered by [Prisma](https://www.prisma.io/) with Accelerate  
-- ⚛️ Frontend in React + Axios + React Router  
-- 🎨 TailwindCSS for styling  
+A non-responsive **[MyDukaan](https://web.mydukaan.io/) dashboard clone** built using **Tailwind CSS**.  
+This project replicates the look and feel of the Dukaan merchant dashboard with a clean, modern UI.  
+It is built primarily for learning purposes.
 
 ---
 
-## 🛠️ Tech Stack
-**Frontend**
-- React
-- React Router
-- Axios
-- TailwindCSS
+## 🚀 Features
+- 🎨 Styled completely with **Tailwind CSS**  
+- ⚡ Lightweight UI
+- 🛠️ Easy to extend with more pages/components  
 
-**Backend**
-- Hono
-- Prisma Client + Accelerate
-- PostgreSQL (Prisma-hosted instance)
+---
